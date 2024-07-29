@@ -77,13 +77,14 @@ export async function POST(req: NextRequest) {
     const audioFile = files.audioFile;
 
     // Save data to the database
-    await prisma.upload.create({
+    const upload = await prisma.upload.create({
       data: {
         email: email,
         audioLevel: audioLevel,
         audioFilePath: audioFile,
       },
     });
+    console.log('upload feito com sucesso:', upload)
 
     return new NextResponse(JSON.stringify({ message: 'Dados recebidos com sucesso!' }), { status: 200 });
   } catch (error) {

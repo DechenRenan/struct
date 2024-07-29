@@ -43,6 +43,7 @@ export default function Home() {
     } else {
       // Handle error
       alert("Erro ao enviar os dados!");
+      console.log(formData);
     }
   };
 
