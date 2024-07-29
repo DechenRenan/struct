@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import formidable, { IncomingForm } from 'formidable';
+import Busboy from 'busboy';
 import fs from 'fs';
 import path from 'path';
 import { PrismaClient } from '@prisma/client';
@@ -18,36 +18,75 @@ if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
 }
 
-export async function POST(req: NextRequest) {
-  const form = new IncomingForm({
-    uploadDir,
-    keepExtensions: true,
-    maxFileSize: 10 * 1024 * 1024, // 10MB
-  });
+async function parseForm(req: NextRequest): Promise<{ fields: any; files: any }> {
+  return new Promise((resolve, reject) => {
+    const busboy = Busboy({ headers: { ...Object.fromEntries(req.headers) } });
+    const fields: any = {};
+    const files: any = {};
 
-  return new Promise<NextResponse>((resolve, reject) => {
-    form.parse(req as any, async (err, fields, files) => {
-      if (err) {
-        return reject(new NextResponse(JSON.stringify({ error: err.message }), { status: 500 }));
-      }
-
-      const { audioLevel, email } = fields;
-      const { audioFile } = files;
-
-      try {
-        // Save data to the database
-        await prisma.upload.create({
-          data: {
-            email,
-            audioLevel,
-            audioFilePath: (audioFile as unknown as formidable.File).filepath,
-          },
-        });
-
-        resolve(new NextResponse(JSON.stringify({ message: 'Dados recebidos com sucesso!' }), { status: 200 }));
-      } catch (error) {
-        resolve(new NextResponse(JSON.stringify({ error: error}), { status: 500 }));
-      }
+    busboy.on('field', (fieldname, val) => {
+      fields[fieldname] = val;
     });
+
+    busboy.on('file', (fieldname, file, filename) => {
+      const saveTo = path.join(uploadDir, filename.toString());
+      const writeStream = fs.createWriteStream(saveTo);
+      file.pipe(writeStream);
+      writeStream.on('close', () => {
+        files[fieldname] = saveTo;
+      });
+    });
+
+    busboy.on('finish', () => {
+      resolve({ fields, files });
+    });
+
+    busboy.on('error', (error) => {
+      reject(error);
+    });
+
+    const reader = req.body?.getReader();
+
+    if (!reader) {
+      reject(new Error('Unable to read request body'));
+      return;
+    }
+
+    const readChunk = () => {
+      reader.read().then(({ done, value }) => {
+        if (done) {
+          busboy.end();
+        } else {
+          if (value) {
+            busboy.write(value);
+          }
+          readChunk();
+        }
+      }).catch(reject);
+    };
+
+    readChunk();
   });
+}
+
+export async function POST(req: NextRequest) {
+  try {
+    const { fields, files } = await parseForm(req);
+
+    const { audioLevel, email } = fields;
+    const audioFile = files.audioFile;
+
+    // Save data to the database
+    await prisma.upload.create({
+      data: {
+        email: email,
+        audioLevel: audioLevel,
+        audioFilePath: audioFile,
+      },
+    });
+
+    return new NextResponse(JSON.stringify({ message: 'Dados recebidos com sucesso!' }), { status: 200 });
+  } catch (error) {
+    return new NextResponse(JSON.stringify({ error: error }), { status: 500 });
+  }
 }
