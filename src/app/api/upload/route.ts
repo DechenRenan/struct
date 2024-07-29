@@ -32,8 +32,15 @@ async function parseForm(req: NextRequest): Promise<{ fields: any; files: any }>
       const saveTo = path.join(uploadDir, filename.filename);
       const writeStream = fs.createWriteStream(saveTo);
       file.pipe(writeStream);
-      writeStream.on('close', () => {
+
+      file.on('end', () => {
         files[fieldname] = saveTo;
+      });
+      writeStream.on('error', (error) => {
+        reject(error);
+      });
+      writeStream.on('finish', () => {
+        console.log('arquivo salvo em ${saveTo}');
       });
     });
 
@@ -72,22 +79,26 @@ async function parseForm(req: NextRequest): Promise<{ fields: any; files: any }>
 export async function POST(req: NextRequest) {
   try {
     const { fields, files } = await parseForm(req);
+    console.log('Parsed form data:', { fields,files });
 
     const { audioLevel, email } = fields;
     const audioFile = files.audioFile;
 
+    if(!audioFile){
+      throw new Error('Audio faltando');
+    }
     // Save data to the database
-    const upload = await prisma.upload.create({
+    await prisma.upload.create({
       data: {
         email: email,
         audioLevel: audioLevel,
         audioFilePath: audioFile,
       },
     });
-    console.log('upload feito com sucesso:', upload)
-
+    // aqui eu quero abrir a o myenv do python executar o whisper com o audio designado. 
     return new NextResponse(JSON.stringify({ message: 'Dados recebidos com sucesso!' }), { status: 200 });
   } catch (error) {
+    console.log(error);
     return new NextResponse(JSON.stringify({ error: error }), { status: 500 });
   }
 }
