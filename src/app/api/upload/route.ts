@@ -29,7 +29,7 @@ async function parseForm(req: NextRequest): Promise<{ fields: any; files: any }>
     });
 
     busboy.on('file', (fieldname, file, filename) => {
-      const saveTo = path.join(uploadDir, filename.toString());
+      const saveTo = path.join(uploadDir, filename.filename);
       const writeStream = fs.createWriteStream(saveTo);
       file.pipe(writeStream);
       writeStream.on('close', () => {
