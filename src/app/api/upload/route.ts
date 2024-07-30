@@ -3,6 +3,8 @@ import Busboy from 'busboy';
 import fs from 'fs';
 import path from 'path';
 import { PrismaClient } from '@prisma/client';
+import { exec } from 'child_process';
+import nodemailer from 'nodemailer';
 
 const prisma = new PrismaClient();
 
@@ -95,6 +97,47 @@ export async function POST(req: NextRequest) {
       },
     });
     // aqui eu quero abrir a o myenv do python executar o whisper com o audio designado. 
+
+    const pythonScript = path.join(process.cwd(), 'transcribe.py');
+    exec(`python3 ${pythonScript} ${audioFile} ${audioLevel}`, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`Error executing Python script: ${error.message}`);
+        return;
+      }
+      if (stderr) {
+        console.error(`Python script error: ${stderr}`);
+        return;
+      }
+
+      // Read the transcription result
+      const transcriptionPath = path.join(process.cwd(), 'transcription.txt');
+      const transcription = fs.readFileSync(transcriptionPath, 'utf-8');
+
+      // Send the transcription result via email
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'your-email@gmail.com',
+          pass: 'your-email-password',
+        },
+      });
+
+      const mailOptions = {
+        from: 'your-email@gmail.com',
+        to: email,
+        subject: 'Transcription Result',
+        text: transcription,
+      };
+
+      transporter.sendMail(mailOptions, (error: { message: any; }, info: { response: any; }) => {
+        if (error) {
+          console.error(`Error sending email: ${error.message}`);
+        } else {
+          console.log(`Email sent: ${info.response}`);
+        }
+      });
+    });
+
     return new NextResponse(JSON.stringify({ message: 'Dados recebidos com sucesso!' }), { status: 200 });
   } catch (error) {
     console.log(error);

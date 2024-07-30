@@ -1,0 +1,2 @@
+ebe8feab5bf5db5ccee6750e27dd3264e1b2da9f 131357024 next-swc.linux-x64-gnu.node
+75303765fc7dcf3db085c1c67c085dd4294b0f96 156838040 next-swc.linux-x64-musl.node
