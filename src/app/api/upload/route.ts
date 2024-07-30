@@ -87,7 +87,6 @@ export async function POST(req: NextRequest) {
     if(!audioFile){
       throw new Error('Audio faltando');
     }
-    // Save data to the database
     await prisma.upload.create({
       data: {
         email: email,
