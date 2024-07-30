@@ -98,7 +98,7 @@ export async function POST(req: NextRequest) {
     });
     // aqui eu quero abrir a o myenv do python executar o whisper com o audio designado. 
 
-    const pythonScript = path.join(process.cwd(), 'transcribe.py');
+    const pythonScript = path.join(process.cwd(), '/uploads/transcribe.py');
     exec(`python3 ${pythonScript} ${audioFile} ${audioLevel}`, (error, stdout, stderr) => {
       if (error) {
         console.error(`Error executing Python script: ${error.message}`);
