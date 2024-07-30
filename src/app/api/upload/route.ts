@@ -115,21 +115,21 @@ export async function POST(req: NextRequest) {
 
       // Send the transcription result via email
       const transporter = nodemailer.createTransport({
-        service: 'gmail',
+        service: 'outlook',
         auth: {
-          user: 'your-email@gmail.com',
-          pass: 'your-email-password',
+          user: 'renandechen@pecege.com',
+          pass: 'L@c4s4d3p4p3l',
         },
       });
 
       const mailOptions = {
-        from: 'your-email@gmail.com',
+        from: 'renandechen@pecege.com',
         to: email,
-        subject: 'Transcription Result',
+        subject: 'Resultado da transcrição',
         text: transcription,
       };
 
-      transporter.sendMail(mailOptions, (error: { message: any; }, info: { response: any; }) => {
+      transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
           console.error(`Error sending email: ${error.message}`);
         } else {
