@@ -133,12 +133,12 @@ export async function POST(req: NextRequest) {
         if (error) {
           console.error(`Error sending email: ${error.message}`);
         } else {
-          console.log(`Email sent: ${info.response}`);
+        console.log(`Email sent: ${info.response}`);
         }
       });
     });
 
-    return new NextResponse(JSON.stringify({ message: 'Dados recebidos com sucesso!' }), { status: 200 });
+    return;
   } catch (error) {
     console.log(error);
     return new NextResponse(JSON.stringify({ error: error }), { status: 500 });
