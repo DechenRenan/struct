@@ -40,13 +40,7 @@ export default function Home() {
 
     setLoading(false);
 
-    if (res.ok) {
-      // Handle successful response
-      alert("Dados enviados com sucesso!");
-    } else {
-      // Handle error
-      alert("Erro ao enviar os dados!");
-    }
+    alert("Obrigado por enviar seu audio. Te enviei um e-mail garantir que seu e-mail está correto : )");
   };
 
   const Loading = () => (
