@@ -144,7 +144,7 @@ export async function POST(req: NextRequest) {
       });
     }
     // Comando para executar o Whisper via linha de comando
-    const whisperCommand = `whisper ${audioFile} --model ${audioLevel} --output_format srt`;
+    const whisperCommand = `whisper ${audioFile} --model ${audioLevel} --output_format srt --output_dir uploads --language Portuguese --task transcribe`;
 
     exec(whisperCommand, (error, stdout, stderr) => {
       if (error) {
