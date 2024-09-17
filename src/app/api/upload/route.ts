@@ -1,12 +1,11 @@
 import 'dotenv/config';
-import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
+
 import { NextRequest, NextResponse } from 'next/server';
 import Busboy from 'busboy';
 import fs from 'fs';
 import path from 'path';
 import { PrismaClient } from '@prisma/client';
 import { exec } from 'child_process';
-import { Console } from 'console';
 
 
 const nodemailer = require('nodemailer');
@@ -31,6 +30,9 @@ if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
 }
 
+let processingQueue: Array<{ audioFile: string, audioLevel: string, email:string}> = [];
+
+let isProcessing = false ;
 
 async function parseForm(req: NextRequest): Promise<{ fields: any; files: any }> {
   return new Promise((resolve, reject) => {
@@ -90,6 +92,68 @@ async function parseForm(req: NextRequest): Promise<{ fields: any; files: any }>
   });
 }
 
+function processNextInQueue() {
+  if(processingQueue.length === 0 ){
+    isProcessing = false;
+    return;
+  }
+
+  isProcessing = true;
+
+  const { audioFile, audioLevel, email} = processingQueue.shift()!;
+
+  // Comando para executar o Whisper via linha de comando
+  const whisperCommand = `whisper ${audioFile} --model ${audioLevel} --output_format srt --output_dir uploads --language Portuguese --task transcribe`;
+  const fileNameWithExt = path.basename(audioFile);
+  const fileNameWithoutExt = path.basename(audioFile, path.extname(audioFile));
+  console.log(fileNameWithoutExt);
+  exec(whisperCommand, (error, stdout, stderr) => {
+    if (error) {
+      console.error(`Error executing Whisper command: ${error.message}`);
+      return;
+    }
+    if (stderr) {
+      console.error(`Whisper command error: ${stderr}`);
+      return;
+    }
+  
+    console.log(`Transcription saved to: ${fileNameWithoutExt}`);
+  });
+  const transcriptionPath = path.join(process.cwd(), `/uploads/${fileNameWithoutExt}.srt`);
+  const sendEmail = (transcription: string) => {
+    const mailOptions = {
+        from: 'dechenwhisper@gmail.com',
+        to: email,
+        subject: 'Olá do novo tradutor do move',
+        text: transcription,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+         if (error) {
+             return console.log('Erro ao enviar email: ' + error.message);
+         }
+         console.log('Email enviado: ' + info.response);
+         fs.unlinkSync(transcriptionPath);
+         console.log('Arquivo apagado com sucesso.');
+     });
+  };
+  const checkFileAndSendEmail = () => {
+    const fileExists = fs.existsSync(transcriptionPath);
+  
+    if (fileExists) {
+        const transcription = fs.readFileSync(transcriptionPath, 'utf-8');
+        sendEmail(transcription);
+        processNextInQueue();
+    } else {
+        console.log('Arquivo não encontrado. Tentando novamente em 10 segundos...');
+        setTimeout(checkFileAndSendEmail, 10000); // Espera 10 segundos e tenta novamente
+    }
+  };
+  checkFileAndSendEmail();
+
+ 
+}
+
 export async function POST(req: NextRequest) {
   try {
     const { fields, files } = await parseForm(req);
@@ -108,19 +172,9 @@ export async function POST(req: NextRequest) {
         audioFilePath: audioFile,
       },
     });
-    const fileNameWithExt = path.basename(audioFile);
-    const fileNameWithoutExt = path.basename(audioFile, path.extname(audioFile));
-    console.log(fileNameWithoutExt);
+
     
     // aqui eu quero abrir a o myenv do python executar o whisper com o audio designado. 
-    const mailerSend = new MailerSend({
-      apiKey: process.env.MAILERSEND_API_KEY, 
-    });
-    const bulkEmails: EmailParams[] = [];
-    const sentFrom = new Sender("renandechen@pecege.com", "Renan Dechen");
-    
-    const pythonScript = path.join(process.cwd(), '/uploads/transcribe.py');
-    console.log("arquivo sendo executado");
 
     try {
       const mailOptions = {
@@ -143,60 +197,14 @@ export async function POST(req: NextRequest) {
         headers: { "Content-Type": "application/json" },
       });
     }
-    // Comando para executar o Whisper via linha de comando
-    const whisperCommand = `whisper ${audioFile} --model ${audioLevel} --output_format srt --output_dir uploads --language Portuguese --task transcribe`;
 
-    exec(whisperCommand, (error, stdout, stderr) => {
-      if (error) {
-        console.error(`Error executing Whisper command: ${error.message}`);
-        return;
-      }
-      if (stderr) {
-        console.error(`Whisper command error: ${stderr}`);
-        return;
-      }
-    
-      console.log(`Transcription saved to: ${fileNameWithoutExt}`);
-    });
-
-    const transcriptionPath = path.join(process.cwd(), `/uploads/${fileNameWithoutExt}.srt`);
-
-
-    const sendEmail = (transcription: string) => {
-      const mailOptions = {
-          from: 'dechenwhisper@gmail.com',
-          to: email,
-          subject: 'Olá do novo tradutor do move',
-          text: transcription,
-      };
-  
-      transporter.sendMail(mailOptions, (error, info) => {
-           if (error) {
-               return console.log('Erro ao enviar email: ' + error.message);
-           }
-           console.log('Email enviado: ' + info.response);
-           fs.unlinkSync(transcriptionPath);
-           console.log('Arquivo apagado com sucesso.');
-       });
-    };
-    const checkFileAndSendEmail = () => {
-      const fileExists = fs.existsSync(transcriptionPath);
-    
-      if (fileExists) {
-          const transcription = fs.readFileSync(transcriptionPath, 'utf-8');
-          sendEmail(transcription);
-
-      } else {
-          console.log('Arquivo não encontrado. Tentando novamente em 10 segundos...');
-          setTimeout(checkFileAndSendEmail, 10000); // Espera 10 segundos e tenta novamente
-      }
-    };
-
-
-    checkFileAndSendEmail();
-
-
-    return new Response(JSON.stringify({ message: "Emails sent successfully!" }), {
+    processingQueue.push({audioFile, audioLevel, email});
+    if(!isProcessing){
+      processNextInQueue();
+    }
+    const queueLength = processingQueue.length;
+    return new Response(
+      JSON.stringify({ message: `Email adicionado na fila. Existem ${queueLength}` }), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });
