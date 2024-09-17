@@ -20,6 +20,10 @@ if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
 }
 
+let processingQueue: Array<{audioFile: string, audioLevel: string, email: string}> =[];
+
+let isProcessing = false;
+
 async function parseForm(req: NextRequest): Promise<{ fields: any; files: any }> {
   return new Promise((resolve, reject) => {
     const busboy = Busboy({ headers: { ...Object.fromEntries(req.headers) } });
@@ -77,7 +81,58 @@ async function parseForm(req: NextRequest): Promise<{ fields: any; files: any }>
     readChunk();
   });
 }
+function processNextInQueue(){
+  if (processingQueue.length === 0) {
+    isProcessing = false;
+    return;
+  }
 
+  isProcessing = true;
+
+  const {audioFile,audioLevel,email} = processingQueue.shift()!;
+
+
+  const pythonScript = path.join(process.cwd(), '/uploads/transcribe.py');
+
+  exec(`python3 ${pythonScript} ${audioFile} ${audioLevel}`, (error, stdout, stderr) => {
+    if (error) {
+      console.error(`Error executing Python script: ${error.message}`);
+      return;
+    }
+    if (stderr) {
+      console.error(`Python script error: ${stderr}`);
+      return;
+    }
+
+    // Read the transcription result
+    const transcriptionPath = path.join(process.cwd(), 'transcription.txt');
+    const transcription = fs.readFileSync(transcriptionPath, 'utf-8');
+
+    // Send the transcription result via email
+    const transporter = nodemailer.createTransport({
+      service: 'outlook',
+      auth: {
+        user: 'renandechen@pecege.com',
+        pass: 'L@c4s4d3p4p3l',
+      },
+    });
+
+    const mailOptions = {
+      from: 'renandechen@pecege.com',
+      to: email,
+      subject: 'Resultado da transcrição',
+      text: transcription,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error(`Error sending email: ${error.message}`);
+      } else {
+      console.log(`Email sent: ${info.response}`);
+      }
+    });
+  });
+}
 export async function POST(req: NextRequest) {
   try {
     const { fields, files } = await parseForm(req);
@@ -96,49 +151,15 @@ export async function POST(req: NextRequest) {
         audioFilePath: audioFile,
       },
     });
-    // aqui eu quero abrir a o myenv do python executar o whisper com o audio designado. 
+    processingQueue.push({audioFile, audioLevel, email});
 
-    const pythonScript = path.join(process.cwd(), '/uploads/transcribe.py');
-    exec(`python3 ${pythonScript} ${audioFile} ${audioLevel}`, (error, stdout, stderr) => {
-      if (error) {
-        console.error(`Error executing Python script: ${error.message}`);
-        return;
-      }
-      if (stderr) {
-        console.error(`Python script error: ${stderr}`);
-        return;
-      }
+    if (!isProcessing){
+      processNextInQueue();
+    }
+    
+    const queueLength = processingQueue.length;
 
-      // Read the transcription result
-      const transcriptionPath = path.join(process.cwd(), 'transcription.txt');
-      const transcription = fs.readFileSync(transcriptionPath, 'utf-8');
-
-      // Send the transcription result via email
-      const transporter = nodemailer.createTransport({
-        service: 'outlook',
-        auth: {
-          user: 'renandechen@pecege.com',
-          pass: 'L@c4s4d3p4p3l',
-        },
-      });
-
-      const mailOptions = {
-        from: 'renandechen@pecege.com',
-        to: email,
-        subject: 'Resultado da transcrição',
-        text: transcription,
-      };
-
-      transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          console.error(`Error sending email: ${error.message}`);
-        } else {
-        console.log(`Email sent: ${info.response}`);
-        }
-      });
-    });
-
-    return;
+    return new NextResponse(JSON.stringify({message: `Seu audio foi adicionado à fila. Existem ${queueLength} áudios na fila`}),{status:200});
   } catch (error) {
     console.log(error);
     return new NextResponse(JSON.stringify({ error: error }), { status: 500 });

@@ -7,6 +7,7 @@ export default function Home() {
   const [audioLevel, setAudioLevel] = useState("tiny");
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
+  
 
   const handleAudioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
