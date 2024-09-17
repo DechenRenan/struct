@@ -52,7 +52,7 @@ export default function Home() {
   };
 
   const Loading = () => (
-    <div className="flex flex-col items-center justify-center min-h-screen">
+    <div className="w-screen max-w-md mx-auto space-y-6 itens h-full">
 
       <div className="flex space-x-2">
         <div className="w-4 h-4 bg-gray-600 rounded-full animate-bounce"></div>

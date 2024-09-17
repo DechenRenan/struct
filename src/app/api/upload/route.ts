@@ -93,7 +93,8 @@ async function parseForm(req: NextRequest): Promise<{ fields: any; files: any }>
 }
 
 function processNextInQueue() {
-  if(processingQueue.length === 0 ){
+  console.log(processingQueue);
+  if(processingQueue.length != 0 ){
     isProcessing = false;
     return;
   }
@@ -103,7 +104,7 @@ function processNextInQueue() {
   const { audioFile, audioLevel, email} = processingQueue.shift()!;
 
   // Comando para executar o Whisper via linha de comando
-  const whisperCommand = `whisper ${audioFile} --model ${audioLevel} --output_format srt --output_dir uploads --language Portuguese --task transcribe`;
+  const whisperCommand = `whisper ${audioFile} --model ${audioLevel} --output_format txt --output_dir uploads --language Portuguese --task transcribe`;
   const fileNameWithExt = path.basename(audioFile);
   const fileNameWithoutExt = path.basename(audioFile, path.extname(audioFile));
   console.log(fileNameWithoutExt);
@@ -119,7 +120,7 @@ function processNextInQueue() {
   
     console.log(`Transcription saved to: ${fileNameWithoutExt}`);
   });
-  const transcriptionPath = path.join(process.cwd(), `/uploads/${fileNameWithoutExt}.srt`);
+  const transcriptionPath = path.join(process.cwd(), `/uploads/${fileNameWithoutExt}.txt`);
   const sendEmail = (transcription: string) => {
     const mailOptions = {
         from: 'dechenwhisper@gmail.com',
@@ -203,6 +204,7 @@ export async function POST(req: NextRequest) {
       processNextInQueue();
     }
     const queueLength = processingQueue.length;
+    console.log(queueLength);
     return new Response(
       JSON.stringify({ message: `Email adicionado na fila. Existem ${queueLength}` }), {
       status: 200,
