@@ -153,7 +153,7 @@ async function processNextInQueue() {
        `,
      };
 
-     transporter.sendMail(mailOptions, async (error, info) => {
+     transporter.sendMail(mailOptions, async (error: { message: string; }, info: { response: string; }) => {
         if (error) {
             return console.log('Erro ao enviar email: ' + error.message);
         }
@@ -240,7 +240,7 @@ export async function POST(req: NextRequest) {
               Estamos muito felizes em ter você conosco. Veja abaixo a transcrição que você solicitou:
             </p>
             <div style="background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); text-align: center;">
-              <h3 style="color: #007BFF;">Aguade que logo será traduzido, temos atualmente temos ${countPending} áudios na fila</h3>
+              <h3 style="color: #007BFF;">Aguade que logo será traduzido, temos atualmente ${countPending} áudios na fila</h3>
               
             </div>
             <p style="text-align: center; margin-top: 20px;">
@@ -255,7 +255,7 @@ export async function POST(req: NextRequest) {
       `,
       };
 
-      transporter.sendMail(mailOptions, (error, info) => {
+      transporter.sendMail(mailOptions, (error: { message: string; }, info: { response: string; }) => {
            if (error) {
                return console.log('Erro ao enviar email: ' + error.message);
            }
