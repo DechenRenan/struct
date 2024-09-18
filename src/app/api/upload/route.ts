@@ -7,7 +7,6 @@ import path from 'path';
 import { PrismaClient } from '@prisma/client';
 import { exec } from 'child_process';
 
-
 const nodemailer = require('nodemailer');
 
 const prisma = new PrismaClient();
@@ -92,107 +91,108 @@ async function parseForm(req: NextRequest): Promise<{ fields: any; files: any }>
   });
 }
 
-function processNextInQueue(findUser: any) {
-  console.log(processingQueue);
+async function processNextInQueue() {
 
-  if(processingQueue.length === 0 ){
-    isProcessing = false;
-    return;
-  }
 
-  isProcessing = true;
+  const user = await prisma.upload.findFirst({
+    where: {
+      status: 'PENDING',
+    },
+  })
+  const id = user?.id;
+  const audioFile = user?.audioFilePath;
+  const audioLevel = user?.audioLevel;
+  const email = user?.email;
 
-  const { audioFile, audioLevel, email} = processingQueue.shift()!;
-
+  console.log(user);
   // Comando para executar o Whisper via linha de comando
   const whisperCommand = `whisper ${audioFile} --model ${audioLevel} --output_format txt --output_dir uploads --language Portuguese --task transcribe`;
-  const fileNameWithExt = path.basename(audioFile);
-  const fileNameWithoutExt = path.basename(audioFile, path.extname(audioFile));
-  console.log(fileNameWithoutExt);
-  exec(whisperCommand, (error, stdout, stderr) => {
-    if (error) {
-      console.error(`Error executing Whisper command: ${error.message}`);
-      return;
-    }
-    if (stderr) {
-      console.error(`Whisper command error: ${stderr}`);
-      return;
-    }
-  
-    console.log(`Transcription saved to: ${fileNameWithoutExt}`);
-  });
-  const transcriptionPath = path.join(process.cwd(), `/uploads/${fileNameWithoutExt}.txt`);
-  const sendEmail = (transcription: string) => {
-    const mailOptions = {
-      from: 'dechenwhisper@gmail.com',
-      to: email,
-      subject: 'Olá do novo tradutor do Move',
-      html: `
-        <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
-          <div style="background-color: #f4f4f4; padding: 20px;">
-            <h1 style="color: #007BFF; text-align: center;">Olá, bem-vindo ao Move Tradutor!</h1>
-            <p style="text-align: center; font-size: 16px; color: #555;">
-              Estamos muito felizes em ter você conosco. Veja abaixo a transcrição que você solicitou:
-            </p>
-            <div style="background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-              <h3 style="color: #007BFF;">Transcrição:</h3>
-              <p style="font-size: 14px; color: #333; white-space: pre-wrap;">${transcription}</p>
-            </div>
-            <p style="text-align: center; margin-top: 20px;">
-              <a href="http://127.0.0.1:3000/" style="background-color: #007BFF; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 16px;">Acessar o Move</a>
-            </p>
-          </div>
-          <footer style="text-align: center; margin-top: 20px; font-size: 12px; color: #888;">
-            <p>Este e-mail foi enviado por <strong>Move Tradutor</strong>.</p>
-            <p>Se você tiver alguma dúvida, entre em contato com a nossa equipe de suporte.</p>
-          </footer>
-        </div>
-      `,
-    };
+  if(audioFile){
+    const fileNameWithoutExt = path.basename(audioFile, path.extname(audioFile));
 
-    transporter.sendMail(mailOptions, async (error, info) => {
-         if (error) {
-             return console.log('Erro ao enviar email: ' + error.message);
-         }
-         console.log('Email enviado: ' + info.response);
-         fs.unlinkSync(transcriptionPath);
-         console.log('Arquivo apagado com sucesso.');
-         //update no pending dele
-         const updateUser = await prisma.upload.update({
-           where: {
-             id: findUser,
-           },
-           data: {
-            status : 'DONE',
-           }
-         })
-         const recursivo = await prisma.upload.findFirst({
+   console.log(fileNameWithoutExt);
+
+   exec(whisperCommand, (error, stdout, stderr) => {
+     if (error) {
+       console.error(`Error executing Whisper command: ${error.message}`);
+       return;
+     }
+     if (stderr) {
+       console.error(`Whisper command error: ${stderr}`);
+       return;
+     }
+    
+     console.log(`Transcription saved to: ${fileNameWithoutExt}`);
+   });
+   const transcriptionPath = path.join(process.cwd(), `/uploads/${fileNameWithoutExt}.txt`);
+   const sendEmail = (transcription: string) => {
+     const mailOptions = {
+       from: 'dechenwhisper@gmail.com',
+       to: email,
+       subject: 'Olá do novo tradutor do Move',
+       html: `
+         <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
+           <div style="background-color: #f4f4f4; padding: 20px;">
+             <h1 style="color: #007BFF; text-align: center;">Olá, bem-vindo ao Move Tradutor!</h1>
+             <p style="text-align: center; font-size: 16px; color: #555;">
+               Estamos muito felizes em ter você conosco. Veja abaixo a transcrição que você solicitou:
+             </p>
+             <div style="background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+               <h3 style="color: #007BFF;">Transcrição:</h3>
+               <p style="font-size: 14px; color: #333; white-space: pre-wrap;">${transcription}</p>
+             </div>
+             <p style="text-align: center; margin-top: 20px;">
+               <a href="http://127.0.0.1:3000/" style="background-color: #007BFF; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 16px;">Acessar o Move</a>
+             </p>
+           </div>
+           <footer style="text-align: center; margin-top: 20px; font-size: 12px; color: #888;">
+             <p>Este e-mail foi enviado por <strong>Move Tradutor</strong>.</p>
+             <p>Se você tiver alguma dúvida, entre em contato com a nossa equipe de suporte.</p>
+           </footer>
+         </div>
+       `,
+     };
+
+     transporter.sendMail(mailOptions, async (error, info) => {
+        if (error) {
+            return console.log('Erro ao enviar email: ' + error.message);
+        }
+
+        console.log('Email enviado: ' + info.response);
+
+        fs.unlinkSync(transcriptionPath);
+
+        console.log('Arquivo apagado com sucesso.');
+
+        //update no pending dele
+        await prisma.upload.update({
           where: {
-            status : "PENDING"
+            id: id,
           },
-          select:{
-            id : true,
+          data: {
+           status : 'DONE',
           }
         });
-    
-        if(!recursivo){
-          processNextInQueue(recursivo);
-        }
-     });
-  };
-  const checkFileAndSendEmail = () => {
-    const fileExists = fs.existsSync(transcriptionPath);
-  
-    if (fileExists) {
-        const transcription = fs.readFileSync(transcriptionPath, 'utf-8');
-        sendEmail(transcription);
         
-    } else {
-        console.log('Arquivo não encontrado. Tentando novamente em 10 segundos...');
-        setTimeout(checkFileAndSendEmail, 10000); // Espera 10 segundos e tenta novamente
-    }
-  };
-  checkFileAndSendEmail();
+        processNextInQueue();
+
+      });
+   };
+   const checkFileAndSendEmail = () => {
+     const fileExists = fs.existsSync(transcriptionPath);
+    
+     if (fileExists) {
+         const transcription = fs.readFileSync(transcriptionPath, 'utf-8');
+         sendEmail(transcription);
+
+     } else {
+         console.log('Arquivo não encontrado. Tentando novamente em 10 segundos...');
+         setTimeout(checkFileAndSendEmail, 10000); // Espera 10 segundos e tenta novamente
+     }
+   };
+   checkFileAndSendEmail();
+
+  }
 
  
 }
@@ -216,10 +216,15 @@ export async function POST(req: NextRequest) {
         status: "PENDING",
       },
     });
+
+    const countPending = await prisma.upload.count(
+      {
+        where: {
+          status: 'PENDING',
+        }
+      }
+    );
     
-    processingQueue.push({audioFile, audioLevel, email});
-    
-    const queueLength = processingQueue.length;
     // aqui eu quero abrir a o myenv do python executar o whisper com o audio designado. 
 
     try {
@@ -235,7 +240,7 @@ export async function POST(req: NextRequest) {
               Estamos muito felizes em ter você conosco. Veja abaixo a transcrição que você solicitou:
             </p>
             <div style="background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); text-align: center;">
-              <h3 style="color: #007BFF;">Aguade que logo será traduzido, temos atualmente temos ${queueLength} áudios na fila</h3>
+              <h3 style="color: #007BFF;">Aguade que logo será traduzido, temos atualmente temos ${countPending} áudios na fila</h3>
               
             </div>
             <p style="text-align: center; margin-top: 20px;">
@@ -271,13 +276,12 @@ export async function POST(req: NextRequest) {
         id : true,
       }
     });
+    console.log(findUser);
 
-    if(!findUser){
-      processNextInQueue(findUser);
-    }
-    console.log(queueLength);
+
+    processNextInQueue();
     return new Response(
-      JSON.stringify({ message: `Email adicionado na fila. Existem ${queueLength}` }), {
+      JSON.stringify({ message: `Email adicionado na fila. Existem `}), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });
