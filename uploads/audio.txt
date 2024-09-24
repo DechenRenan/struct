@@ -1,0 +1,940 @@
+Depois de pedir com o GP do transcurso.
+Mas foi um quarenta.
+Vamos falar um que hoje sobre GOS,
+nós vamos ver o sobre o GOS,
+temos um templo entesinho,
+também vocês vão criar na eixo,
+aparece esse templo,
+tem muito do que está aqui,
+caso com aquele templo ente,
+mais algumas coisas que
+a gente foi testando o decorrer do tempo e viu
+o que fica legal,
+o que olhou o feedback de Deus,
+o que fica legal também,
+então vou dar uma geral aqui,
+sobre a escrita de OS,
+é uma coisa que não tem muito certo,
+muito errado,
+mas você consegue diferenciar uma boa OS,
+e não tão boa.
+Algumas boas práticas aí no geral,
+antes de começar,
+quais são os objetivos,
+das duas histórias aí,
+ela tem que problematizar
+alguma situação,
+então apresentar algum problema que o time
+que é atacar,
+isso é importante,
+para dar a noção para o time de
+qualquer objetivo que a gente quer atingir ali,
+o que a gente quer resolver.
+Aí a gente tem como testualizar também,
+não é, se inscrever ali,
+o que está ao redor,
+aquele problema,
+para dar mais informações,
+as motivações,
+que está por trás daquilo,
+falando de motivações,
+é importante ir se me despertar ali,
+o propósito e no time do porque
+a gente está fazendo aquilo,
+então sempre se inscrever lá,
+o porquê das coisas,
+o que a gente quer resolver,
+o que a gente vai ganhar com aquilo,
+qual o valor que a gente vai entregar,
+e aí a gente precisa guiar o time também,
+eles precisam saber como,
+o que fazer para atingir aquele objetivo lá,
+então tem que ser passado,
+de uma série de instruções,
+de como chegar naquele objetivo,
+e isso é a gente faz,
+por meio de documentação,
+colocando tudo isso ali no lugar só,
+o documento da OS,
+para que isso fique,
+também,
+consultável no futuro,
+para entender por que as decisões
+foram tomadas naquela época,
+naquela forma,
+e tudo mais.
+Quem que atua,
+então nas OS,
+a gente tem o pior,
+o Guadion da OS,
+ele que vai escrever,
+ele que vai ir atrás,
+entender o problema,
+fazer todo a parte de descobrir,
+levantamento ali,
+transformar isso,
+em um conteúdo que seja seguido pelo time,
+para motivar e ir ao time.
+Na maioria dos time,
+a gente tem o papel do design,
+e também,
+que é responsável ali,
+por pegar toda aquela motivação,
+toda aquele contexto,
+e apresentar aquilo de uma forma
+que deu a melhor experiência para os usuários,
+então ele pega tudo aquilo aquelas regas,
+que ele problemas motivações,
+e transpõe isso para algo físico,
+na verdade,
+digital,
+mas que seja visualizável ali,
+que tem uma boa experiência para os usuários,
+e tem o deve,
+que ele vai quebrar aquela OS em testes,
+para conseguir quebrar aquele problema
+em problemas menores,
+ainda menores,
+e vai seguir ali todos os critérios
+para colocar aquilo na prática.
+E ele também ajuda o pior,
+e possíveis complementos,
+não é,
+às vezes o pior ele não consegue pensar
+em tudo ali,
+e o deve,
+quando ele pega aquilo para desenvolver,
+ele enxerga algumas coisas,
+talvez a gente tem que olhar para isso também,
+então a vez tem a faltar do fazir isso,
+talvez tem que mudar essa forma de fazer,
+enfim.
+Então eu essa,
+e apesar de ser responsabilidade do pior,
+que ela seja criada,
+e chega até o final,
+todo o time contribuiu o design,
+o deve,
+para que aquilo foi o melhor.
+E como a gente escreve,
+então,
+boas e os seus stories,
+falando que em quatro passos,
+primeiro a gente contextualiza,
+mostra ali para o leitor,
+o que está acontecendo,
+como que as coisas se desenvolve,
+ao redor é aquele problema,
+quem são os envolvidos também.
+Depois a gente esclaresse o problema,
+que eu chamo de problema deização,
+que doir,
+que ele está causando hoje,
+que está acontecendo ali,
+porque a gente está atacando aqui.
+Depois a motivação,
+o que a gente quer atingir aqui,
+resultados que a gente está esperando,
+e pactos que a gente vai causar,
+e isso fica estruturado tudo no lugar,
+só,
+então eu tenho todo esse conteúdo,
+no único documento ali.
+Aqui eu vou usar um exemplo de um problema,
+que é,
+no sistema financeiro,
+os usuários fazem os lançamentos da despesa,
+normalmente, todos os dias.
+Esse é o exemplo de problema que eu vou usar,
+apresentação toda,
+para ir passando por cada parte do S.
+Então,
+tem o sistema financeiro,
+os usuários,
+manualmente,
+lançam lá as despesas,
+e isso é uma coisa que o time olhou,
+e precisa melhorar isso.
+O primeiro passo é criar o título,
+para o S.
+Então, você vai lá dar um nil no card,
+e você tem por um título ali.
+Alguns escrevem já de cara,
+conseguem pensar num título definitivo,
+outros depois que,
+que pecorreram S inteira,
+eles voltam e,
+acho que o título agora tem que ser assim.
+Então, depende,
+se você conseguir tirar já de começo,
+beleza,
+se não muda depois do final.
+O que que um título bom tem?
+Tem que tentar mãe o médio ali,
+de três a seis palavras no máximo,
+pode ser muito curto,
+nem muito longo.
+Ele tem que destacar aquela solução
+que vai ser construída ali,
+e ele tem que adiantar pro leitor,
+o que ele tem que esperar naquela S,
+só de bater o olho ali.
+Então, o título bom,
+por exemplo,
+seria ser lá,
+em criação
+da exportação,
+de planilhas,
+de despesas.
+Olha ali,
+eu sei que vou trabalhar
+numa funcionalidade,
+ali dentro vão ter recursos e motivações
+em torno,
+numa funcionalidade,
+que, no final,
+vai ser implantado,
+uma exportação ali.
+Um título ruim,
+ele é muito curto,
+ou muito longo.
+Então, sei lá,
+criação de botão.
+A curtíssima ali,
+e não fala nada, né.
+Ele é gênérico,
+então,
+se bate olho,
+não consegue saber,
+em que ponto do sistema,
+em conta,
+o que aquela solução traz,
+então sei lá,
+juste, gerais.
+É um clássico aí
+aqui no momento,
+a gente vê que tem aí dentro,
+né,
+que desbrava para conseguir saber.
+E ele deixa muito as dúvidas do que se trata, né.
+Então,
+é comum,
+a gente olhar e ver alguns títulos
+assim,
+que,
+você não consegue saber de cara
+que significa,
+o boa prática é tentar deixar
+claro ali,
+três a seis palavras,
+que parte do sistema que não estava,
+que vai ser feito, só no título ali pra até ficar fácil de achar depois também.
+Porque sei lá, mais para frente, surge um bug naquela funcionalidade, isso é que é olhar como que foi feito.
+Esse procura lá, o nome da funcionalidade já vai achar essa.
+Para isso também.
+Depois do título, a gente vai criar o card e começa pela contextualização,
+que é aquele primeiro passo que eu falei.
+A contextualização, eu costumo dividir ela em três partes,
+na visão, que tem que descrever o cenário que o problema se encontra,
+e quem são os envolvidos, então, tipo, pensando em um afunilamento,
+você começa lá de cima, primeiro quem são os envolvidos,
+qualquer problema no geral e, mais genérico, depois você vai afunilando.
+Então, começar a contextualização, tem aqui um exemplo não indicado, né?
+A pessoa foi começar a escrever e colocou lá.
+Hoje os usuários fazem o lançamento do sistema financeiro, sendo que tornamos.
+O pouco genérico ali, tipo, que tipo de lançamento que a gente tá falando,
+não sei, né? Então, fica um pouco genérico.
+Um bom exemplo aqui dessa visão, né, contextualização, que é aquela primeira parte que eu vou começar a afunilar.
+Diariamente, o sistema financeiro alimentado com uma série de entradas,
+que vão desde cadassos novos fornecedores até recebimentos e despesas.
+Um dos tipos de lançamentos que possuem mais volume são as despesas.
+Então, aqui, já falei mais sobre o tipo de lançamento que tem no sistema,
+já comecei a levar um pouco mais para o lado das despesas, tá?
+Depois eu dar esse contexto mais geral do que acontece hoje,
+ai eu parte para o problema de nação, que é onde eu vou começar a falar, tá?
+Porque aqui é um problema em hoje, né? Que dors isso tá gerando.
+O mais exemplo, né, isso faz com que os usuários tem o muito trabalho para fazer e ficar enchatiados.
+Então, deixa o muito gênerico da trabalho e isso fica enchatiado, tá, mas por que aqui da atrapalho, né?
+Então, eu estou entrando aqui nas dors, né, exatamente.
+E aqui, um exemplo um pouco mais completo, né?
+Atualmente os usuários fazem esses lançamentos mal�amente, sendo um de cada vez, e aí eu entre nós dors.
+Isso faz com que vários erros de digitação acabem ocorrendo,
+gerando em pactos significativos do caixa da empresa,
+além disso os usuários acabam locando muito tempo do dia nesse lançamento,
+deixando de aplicar esses forços, interessas mais importantes. Então aqui,
+eu já troço mais informações do por que aqui aqui, lá um problema, aqui dors e sucalas,
+mas para frente, vocês vão ver também que eu vou completar isso com alguns dados,
+que se você conseguir trazer não, né, se ele também vai enriquecer bastante.
+Vou dar um exemplo depois.
+Então, tenho contexto lá em cima, de como hoje, problemas que isso está gerando,
+ai eu parte para a solução, que é o que a gente vai fazer e o por que que valor que aquilo vai gerar.
+Que a parte final é a contextualização. Então, uma forma ruim de fazer isso,
+a pessoa concluiu assim, pensando nisso, vamos criar uma forma do usuário,
+importar os lançamentos via planilha, para que eles consiga criar todos os lançamentos de uma vez.
+Tá, ficou claro que ele vai criar mais de uma vez, mas o que isso vai dar de valor no sistema ali,
+o que ele vai ganhar com isso, né, está muito claro, né.
+E aqui eu tenho exemplo um pouco mais bem definido, né, portanto, o intuito dessa vez,
+é disponibilizarmos uma forma de agilizar o processo de lançamento de especial no sistema,
+de forma que o usuário consiga ter mais eficiência e segurança na realização dessa tarefa.
+E aí a solução, por meio de uma importação orientada planilhas,
+o usuário poderá criar um ou mais nessa mesma vez, diminuindo o trabalho manual e liberando mais tempo
+para que o usuário possa aplicar em outras tarefas que serão mais importantes.
+Então, aqui eu entrei na solução e nos valores, né, que eu vou liberar mais tempo do usuário para fazer outras coisas,
+vai ter mais segurança ali no processo, agilidade, enfim, né.
+Isso faz a diferença, também, para deixar mais claro.
+Algumas outras boas práticas da contextualização ali, que eu costumo fazer,
+eu acho que faz a diferença.
+Destaques inegritos, né, mais que as palavras ali, o trecho mais importantes inegritos,
+isso ajuda na hora que o dev está vendo, ele bateu olho ali e sabia que aquela parte
+não pode deixar passar.
+Protótipo, né, adiciona o link do protótipo lá, se tiver o esboço, o que for lá, né,
+né, contextualização lá, link do protótipo.
+Eu deve conseguir abrir isso e ver lá, mais detalhadamente.
+E as referências, né.
+Se é um problema que já foi abordado antes, você é derivado, né, se ele é uma continuação de alguma o S,
+então, sei lá, vou fazer uma listagem de usuários que, lá dentro, vou poder adicionar,
+de tal, excluir.
+Primeiro, eu tenho o S da listagem e lá, eu já tenho o botão de adicionar,
+mas eu não vou abordar aquilo naquela S.
+Eu posso referência a no S da adicionar.
+Lá da listagem, que foi feita na O S, e tal,
+existe o botão adicionar, então, esse link é muito importante também de fazer
+para continuidade ali.
+E aí aqui eu tenho um exemplo completo da contextualização de forma mais ruim,
+um pior, no caso, juntando as três partes.
+Hoje os usuários fazem vários lançamentos do sistema financeiro, sendo turna mão.
+Isso faz com que esse tem muito trabalho a fiquem chatados, e por isso a gente vai criar uma planilha,
+para eles importar tudo uma vez.
+Tá vago, né, totalmente.
+E aqui eu tenho um exemplo mais completo da contextualização, como ela tem que ser.
+Então, eu tenho lá em cima, a demarcação do topo que eu estou falando, top com um,
+com o testo avisação.
+Eu tenho aqui a visão, que eu acabei de explicar, né,
+começando ali a fundilar de aramento, o sistema alimentado com uma série de entradas,
+que vão desde cada astrimos a terra das despesas, e as despesas são o que mais tem volume.
+Aí eu tenho a problema de ação, que daí eu falo do porquê que isso está sendo o problema hoje,
+não borrelei de novo, mas só encaixar as partes aqui, tá?
+E aí por fim eu tenho a solução em os valores,
+que daí vão coroar todo a motivação da OSD.
+E aqui eu tenho também a inserção de alguns dados, no meio, né,
+se possível trazer esses dados, vai fazer com o que é só esse passo e mais credibilidade.
+Porque de fato, se eu foi lá, e garem poucos dados que a gente tem em cima daquele problema hoje.
+Então aqui, né, falei dos problemas de digitação, que é acabo gerando impactos significativos.
+Por mês, a empresa chegou a registrar, que chegam, que as diferenças chegam entre os mil dos em 50 reais.
+E um ano isso vai para 39 mil reais.
+Um exemplo aqui, os dados são um fixíssimo, tá? Só para constar.
+Os usuários gastam, minimamente, duas horas por dia, fazendo esses lançamentos,
+o que por mês eram um gasto de 60 horas por funcionário, só nessa atividade.
+Então, trago aí dados para compor a OSD.
+Para quem tem dificuldade de enxergar essa contextualização assim de cara de quebrando ela,
+tem aquela famosa formulinha do eu, como tal coisa, para tal coisa, gostaria de tal coisa.
+E isso é uma coisa que se inscreve ali em duas, três linhas, e já passa toda essa visão completa
+para que você consiga aqui abrar isso o melhor depois.
+Então, é vale dos altas, também, a princípio, para quem tem dificuldade.
+Então, acho que lá no template está esse primeiro formato, né, para que o objetivo que eu quero atingir,
+eu, como, função da pessoa ali envolvida, gostaria de tal coisa.
+Ou então, eu, como, função da pessoa gostaria dessas soluções ou decisivadores para que eu consiga atingir isso.
+Então, talvez quem tem dificuldade, faz isso primeiro depois, monta a contextualização mais tonada, né.
+Tem uns exemplos aqui, baseado no problema lá também.
+Para que eu possa lançar as despesas de forma mais eficiente,
+eu, como, responsável financeiro por realizar as entrada no sistema, gostaria de uma forma de criar vários lançamentos de uma vez.
+Ou eu, como, responsável financeiro por realizar as entrada no sistema,
+gostaria de ter uma forma mais eficiente de lançamento de despesas para que eu possa ter mais tempo, livre e pros outros tarefas.
+É isso, eu gero todo o resto, né.
+E aqui a gente fechou a contextualização, que é a primeira parte da OS.
+Se alguém quiser me ter romper, fazer uma dúvida é esse aumento, sobre a contextualização, que deve inventar nos critérios de aceite.
+A gente é um comentário?
+Não, então, eu vou seguir.
+Criteros de aceite, que talvez seja maior parte da OS,
+dependendo do problema que está sendo resolvido.
+Que são os critérios de aceitação?
+Eles vão indicar o que precisa ser feito naquela OS para atingir o objetivo,
+aquela parte de galtime que eu falei.
+Onde que eles ficam, depois do a contextualização?
+Então, eu vou ter a contextualização no topo e depois os critérios.
+O que tem que ter lá dentro, né?
+Uma série de instruções para conseguir atingir aquela solução, né?
+Que foi proposta para o problema.
+E como a gente tem que escrever isso, né?
+Tem que ser de maneira sequencial.
+Então, eu não vou começar a falar do malestagem
+por uma coisa que não seja o começo dela,
+talvez começar pela grida ali, depois os filtros,
+então, eu vou começar trás para frente e falar de escrever aquela tela, né?
+E tem que ser ilustrativa e de orir atoponto, né?
+Pode ser muito inflado também, se não, o dev vai olhar,
+ele vai só abrir o protótico e tentar adivinhar o que tem que ser feito.
+Voltando para aquela solução, então, do problema, né?
+Que era a questão de criar uma importação de planilhas, né?
+Que a gente definiu lá na parte de soluções e valores da contextualização.
+Como é que eu faço?
+Como é que eu começo a escrever então os critérios, né?
+Eu recomendo começar a pensar em quais passos o dev vai ter que seguir,
+o time vai ter que seguir para fazer aquilo funcionar.
+Então, no caso daquela solução, né?
+Por onde que eu vou disponibilizar a no sistema, né?
+Por onde vai ser acessado isso?
+Como que o usuário vai inserir a planilha?
+Depois que ele inserir, que tipo de...
+Como que o sistema vai ler isso e que tipo de alterações ele vai fazer?
+E depois que ele processar, como é que o vou apresentar esse resultado, né?
+Então, é o clássico em pute, processamento, o auto-pute, né, do sistema,
+e o acesso dessa funcionaridade, nesse caso, nesse problema aqui.
+Cada um desses passos, eles viram um topo, então, daquela OS, né?
+Inclusive, eu posso quebrar e mais OS,
+posso ter uma OS só da disponibilização do acesso, uma OS sóda do input e outra sóda do processamento e outra sóda resultado,
+mas aqui eu estou dando um exemplo mais contínuo.
+Então, cada uma vira um topo, e a gente tem que nomear esse topo, porque também.
+Um mal exemplo de nomear esses topos, né?
+Botão para importar a planilha, model de selecionar o arquivo,
+lançamento das espécies no sistema retorno de sucesso.
+Fica muito genérico, né, eu sabia dessa forma, assim, está muito solto, né?
+Como eu recomendar isso, escrever, dessa forma aqui, no meurando, né?
+Topco 2, topco 3, topco 4, topo 5.
+E fazendo a escrita, como se fosse um tutorial, passos de um tutorial, disponibilizando o acesso à importação,
+inserindo o arquivo, você não portava.
+Realizando a criação das espécies no sistema e exibindo os resultados da importação,
+então, como você tivesse o deve acessando um tutorial do que tem que fazer ali,
+e cada passo é uma ação ali no gerúndio de lá.
+Agora, você vai estar fazendo isso, agora você vai estar fazendo aqui,
+e tem uma outra forma também, que é como se tivesse nomeando ali o título num topco,
+de um capítulo de um livro, né?
+A vez eu usar o gerúndio, o NDL, né?
+Disponebilizando o acesso, disponibilização do acesso à importação,
+que é como se fosse o topco do artigo ou do livro, né?
+Inserção do arquivo, você é importado, criação das espécies no sistema,
+exibição dos resultados da importação.
+Então, fica mais claro ali, porque você está fazendo o tutorial,
+o que ele vai ter que seguir, e no mesmo ano dessa forma, dá essa sensação.
+Criou os topcos, beleza?
+Agora, tem que preencher tudo, né?
+Como é que preencha? Algumas boas práticas, né?
+Seja o objetivo, quanto mais volta se ficar dando e dependendo do assunto,
+ainda, você é muito complexo, a rega ali,
+dá no, vai ficar, vai ficar doido, vai te chamar cada um parágrafo que ele.
+Então, seja objetivo, use marcadores, né?
+Quando você for listar, por exemplo, componentes de uma tela, e tudo, use uma listinha, né?
+Filho, trutal, e os dados ali, tal coisa, e os dados ali, não é uma listinha para ficar claro.
+Desenho, né? Sempre que possível, fazia no fluxo gamma, né?
+Coloca lá um diagrama e colocando o fluxo,
+printa lá, imagem do protótipo e coloca depois do texto ali, pro deve.
+Ele é o texto que tem que ter, já vê a imagem embaixo, né?
+De caso dos dois, fica mais claro, né?
+Deem fazer naquilo que é crítico, né?
+Então, se tem alguma coisa, de alguma rega, que tem que ser validada,
+de um gente de infatezar aquilo, marca de vermelho,
+escreve ele é importante, isso aqui tem que ser assim, então.
+E conecte as coisas. Então, o conforme você for, escreve, não é seria?
+Se te os topcos anteriores, né? Com forma idita, no topco tal lá, agora, tal coisa.
+Lá no topco seguinte, essa funcionaria, ele será melhor abordada, então.
+É pretentemente se conectar o S, né, para ela ter um início meio fim ali.
+O mal exemplo aqui de critérios aceitação.
+Ele nomeou aqui, né? Modal de selecionar arquivo.
+E colocou, criar uma tela em que o usuário pode arrastar uma planilha em Excel e confirmar a importação,
+e botou uma imagem, no caso, não tem imagem, mas imagine que um protótipo da tela.
+Então, aqui está muito direto, né?
+Curiu uma tela, para ele arrastar e confirmar.
+Tá, mas quais são as regras, eu tenho que validar o tipo do arquivo que está sendo importado,
+eu vou ter algum outro em que o que vai ser.
+Eu deve ter que adivir a pelo protótipo.
+Se não protótipo não tem isso, ele não vai saber, né?
+E aqui um bom exemplo, né?
+O que eu tenho nesse bom exemplo, eu tenho lá o nome do topco.
+Topco 3, inserindo o arquivo que você importava.
+Eu tenho a conexão com o topco que veio antes dele,
+então, ao fazer o acesso a funcionidade de importação de planilha,
+que foi melhor explicado no topco 2,
+então, antes desse teve um topco falando sobre o acesso, né?
+deve ser recibido uma tela com os seguintes componentes.
+Aí eu tenho a componenteização da tela, no formado de lista,
+então eu vou ter o título importar planilha,
+com o teu do mar, em que o usuário pode arrastar o arquivo,
+ou clicar para abrir o navegador de passas do computador,
+para que ele possa selecionar o arquivo.
+Aí aqui, aí, em fazer o que eu falei,
+importante, apenas arquivos no formado de x,
+ele é sx, podem ser aceia.
+Então, eu dei aí fazendo uma raga aqui, não pode ser tal horde,
+não pode ser tal por pôde, não pode ser tal por pôde,
+só x, ele é sx.
+Botão salva, se pressionado,
+valida se há um arquivo inserido e dispara os procedimentos no topco 4.
+Então, eu já fiz a conexão com o topco que eu é vinda depois.
+Botão fechar, se pressionada, apenas fecha, a tela que foi aberta,
+e aqui é imagem do protótico.
+Olha a conexão com o topco seguinte aí,
+fazer que eu falei e a imagem lá embaixo.
+Aqui eu tenho uma estrutura um pouco mais bem definida,
+que vai deixar menos dúvidas aí.
+É claro que uma dúvida outra, sempre vai acabar surgindo,
+deixar o menos possível de dúvidas ali,
+para ser entiradas depois.
+Outras boas práticas aí, né, coherência.
+Tem que validá-se o que você tá escrevendo ali,
+bate com a imagem, você tá colocando.
+Porque às vezes você fala lá, o título é importar a planilha.
+A imagem tá lá, importação.
+Eu deve falar, meu escreve importação,
+ou escrevo importar a planilha.
+Ou na imagem eu tenho lá um drop zone,
+e no...
+Eu escrevi que é um botão, que ele vai clicar para importar.
+Fica, né, descazado.
+Então, tem que ter essa coherência.
+Farte de referências, eu trago de novo aqui,
+então, se ver alguma OS complementar que tá sendo escrita,
+ou já foi, e você pudesse estar ali para fazer sentido,
+cita também. Então, nesse caso aqui,
+eu fissuro não é esse só.
+Mas se eu tivesse...
+Essa OS fosse só sobre a insertação,
+eu falaria lá, na OS tal foi definido o acesso,
+a funçãoidade de importação da planilha.
+Então, quando ele acessar lá,
+ele vai cair aqui nessa model e tal.
+Então, faz a conexão entre as OS também.
+Casos de testes, né,
+inclusive isso tem até no...
+no template lado do Azure.
+Talvez nem toda OS precise disso,
+mas quando o FormOS que tem alguma certa complexidade ali,
+faz um topo só para falar sobre os cenários,
+se você não conseguir escrever isso durante o OS,
+tipo, alguns pontos importantes ali,
+que a rega não pode fugir daquilo,
+com o topo lá embaixo,
+e naquele template que está lá na Azure,
+que vai ajudar, depois na validação também.
+O criou uma testa de uma logação,
+do que você vai a loga naquele depois também.
+E a colaboração, né,
+sempre consulte ali o time,
+para ver se a sua escrita está legal,
+né, se está faltando detalhes,
+se está entendível,
+para seguir melhorando, né,
+esse modelo que eu sigo hoje aqui,
+eu comecei a usar lá no Sol 2021,
+peguei um pouco do que eu chumbou a fazer lá,
+juntei um pouco com algumas OS que estava lá mais antigas,
+fiz um primeiro modelo,
+depois eu fui melhorando ele com base no que os deves for falando,
+e hoje eu só sigo ele, né,
+e repasso sempre para quem eu posso também,
+porque eu acho que é o modelo que funciona bem.
+E eu acho que é isso, gente,
+passei aqui bastante coisa,
+não sei se ficou alguma dúvida e tal,
+mas aí,
+e, lá, contar bozes histórias aí,
+para que os nossos deves conseguiram saber o que eles estão fazendo,
+porque eles estão fazendo,
+mantém todo mundo motivado,
+que há ali e bem do comentado,
+para depois você entender o porquê que você fez aquilo,
+né, porque a gente faz muita coisa,
+e depois nem lembra mais porque,
+e aí vai estar lá do comentado.
+Então, é isso, gente,
+obrigado pelo espaço.
+A gente é uma comentária, uma dúvida,
+um complemento,
+com uma crítica também.
+Bom, o comentário que eu posso fazer aqui,
+e o meu interdit é disponível,
+então, o que eu vou fazer aqui,
+e eu vou fazer aqui, e eu vou fazer aqui,
+e eu vou fazer aqui, e eu vou fazer aqui,
+e eu vou fazer aqui, e eu vou fazer aqui,
+e eu vou fazer aqui,
+mas eu jáeau que choos pelo記 Earl,
+porque melhor que eu.
+Me não constos veram Stories do Less?
+Se vocêará mais para que essa sua mesma contladı,
+mas chegou aца aqui e foi sentável para fazer...
+mas deixamos de dar um contesto,
+tinha de ver o rapida até o contexto de юracho,
+sempre comessente, né, né,
+e na diffé nadar comitch 주세요.
+Ele sabe, o parecer com isso, assim, de a Fone-Lan,
+e começa, falando como é hoje,
+Por que que está ruim desse jeito e o que vocês vão fazer para melhorar?
+Não, vamos ver esta ali mais.
+Então, eu vou dar esse vídeo bem rápido,
+eu vou para o que isso crinta com a área,
+e daí, já atrás, o que certinho.
+É importante, ele aconteça e tem isso aí, né?
+É funilando, porque às vezes o cara só foca na solução, né?
+Vamos construir uma importação de planilhas aqui,
+que vai fazer a galera,
+criar os lançamentos mais rápidos e liberar mais tempo.
+Está mais qualquer. Foi toda carga que levou a gente chegar nisso, né?
+Então, sei se gera desse jeito.
+O que é feito, né?
+Algo é mais.
+Se tivesse uma ferramentinha que a gente mandasse,
+ele usasse de padrão e devolver esse histórico.
+Aí, aquilo que eu vejo, né?
+A gente teria que ter...
+Uma base bem alta de US, nesse formato,
+para conseguir treinar o modelo para encaixar.
+Eu não sei se o que a gente tem inscritor já é suficiente.
+É, tipo...
+Não.
+Ai
+Mas posso Mysteriar opicão aqui, Signoria.
+Mas ele consegue dememorizar souvent a schools.
+Então ele consegue ad alarmsinken,
+soilificar a Tennessee.
+É a gente...
+Para quem vai?
+Como essa ilársala, eu sou um pouco mais complexe
+a lokação o Monteés, com o que uma está flaw dobra
+que dando alguns tipos, fora pra ir.
+Não tavam decisiones com o něco,
+mas oedeço, também é comum que o I Saio Kingdom
+com o Monteés, mesmo
+eu acho que meio BC Arthur employou
+a doctor dominando o conceito de Verdim
+com la remainder da polymerza dalehra
+a primora exculta do sonho e o Essa
+e Why the Adventure
+Fala onde de GPT, por eu particularmente, o material original, o gero, eu vou e vou
+escrevendo. Se tem alguma parte que eu enrosquei a semana, esse aqui talvez possa ser
+mais simples, eu fiz em três parágrafos, talvez desde para reduzir a eu jogo lá,
+eu ainda sou muito orientado a sair da minha cabeça, primeiro e depois, sabe?
+E às vezes ele tem feita colocando mais problemas ali, sendo que você não está
+tema, aqueles problemas na sua realidade que você está notando, mas ele entende que
+normalmente quem tem esse problema, que também tem esse, então eu já vou justificar
+que também que isso está sendo um problema, sendo que as vezes não é.
+E às vezes ele até falha, mas daí pode ser separado em outra igua, esse, em outra
+momento, não é sério, 20, 20, 20, 20, 20, 10, está aqui na hora, eu tinha mostrar o
+pro surismo, esse que é o que eu tinha feito com a dona, de pegar o S que ela fez
+e sair e ponto antes de pular valia e faz, né? Aí seria da hora uma ferramenta nesse
+esquema, só que daí se teria que ter uma base enorme de o S, pontuadas ali, né, pra
+ele aprender o único que ele tem que ponto R. Se a gente tem o dura ponto R. E exatamente,
+porque tipo, um...
+Essa querida é que estou segredo, é que ele pode ir também, pelo menos assim cuida.
+Nós não somos um pouco mais impactado, também na sua材 seはい anakuga.
+Mas é muito sério em que o U.S.
+a gente pode ser em uma espelhada, que é a legia de sádio.
+Até porque tem sédio de U.S. que se já sabe que tem que fazer.
+Mas é muito sério em que o U.S. se já sabe que o U.S. se já sabe que o U.S. se já sabe que o U.S. se já sabe que o U.S. se já sabe que o U.S. se já sabe que o U.S. se já sabe que o U.S. se já sabe que o U.S. se já sabe que o U.S. se já sabe que o U.S. se já sabe que o U.S. se já sabe que o U.S. se já sabe que o U.S. se já sabe que o U.S. se já sabe que o U.S. se já sabe que o U.S. se já sabe que o U.S. se já sabe que o U.S. se já sabe que o U.S. se já sabe que o U.S. se já sabe que o U.S. se já sabe que o U.S. se já sabe que o U.S. se já sabe que
+o U.S. se já sabe que o U.S. se já sabe que o U.S. se já sei que o U.S. se já sabe que o U.S. se já sabe que o U.S. se já sabe que o U.S. se já sabe que o U.S. se já sabe que o U.S. se já sabe que o U.S. se já sabem que o U.S. vai ver com o U.S. se já sabe que o maior que o U.S. se já sabe o O.S. se já caulifloweraria
+rappelar pessoas que você, Numo de Chiamdope,
+Nostrou um de um pais para você ir pra você dar
+字 que no filme era conversation com ele,
+mas�ira o eu e esse jogo para ele em dia,
+me ee na cuchiu e você filo
+ao primeiro sério final tem passé.
+Estou sempre ao enceending clumsy,
+quando você pega ela de jogar onde ele sempre de por,
+quais são os casos de teste.
+difficult
+e urmaine os times,
+se você beenjante também?
+clusters de principos
+que são os sintáveis de cittir em tais funcionários da reze, que eu acho que mais que o topeira
+da pergunta aí.
+A gente é uma casa de TF, é sensacional só não, porque daí se já deu todo o contexto
+pra ele, né?
+Desscrever o tudo ali, aí ele vai trabalhar esse mundo em gosto de já.
+Exatamente, pra ele é só, beleza, qual é seu funcionário que você vai pensar para
+essa explação de desta forma nesse mundo que eu sei, acho que até a hora de ser
+documentamente porque as espingam algumas e o S que não precisa ter seu narrador,
+acho como um pouco obrigado a gente nos posicionar se deveria não ter
+espic насколько porque assim como índo sempre esse quando eu chego
+north, do fósito e написations upsetamente no tipo pessoas, kebulas apoio
+Temos um cenário, mas no final de todas as cenários, um dos critérios.
+É, tipo, umas coisas menos assim, então que eu vou nas por exemplo,
+tem um consculo paredão, que é tipo, responsabilidade da terra,
+né, visto todos na verdade, os refusos não são certinho, não nos pedindo assim.
+Perfecto.
+É, na forma que eu customo escreveu, eu vou deixando essas validações mil,
+naturalmente, conforme os critérios que eu vou colocando, sabe?
+E aí, tipo, a gente lança uma testa que deu uma loucação depois também,
+que o pior vai fazer, onde está um pouquinho mais detalhado, o que que ele vai validar.
+Então, é importante saber o que vai validar, numa forma de outra,
+seja isso tão embutido, já no texto, conforme você vai escrever,
+o isolado num top com uma testa que é a parte só naquilo,
+mas é bom deixar claro que tem que ser validada ali,
+porque às vezes a pessoa não tem experiência com testa e o que vai mexer,
+não tem quem vai mexer, não está muito enviazado do que fez,
+e não passa, né.
+Na minha visão, a história tem que contar naturalmente assim,
+o que tem que ser construído, as regras que tem que ser colocadas ali,
+tudo meio, né, embutido ali,
+mas colocar um top com específico sobre isso também funciono,
+que tem esse direciona só, para aquela parte,
+nas vezes o cara é só ler aquele top,
+eu não tenho que ler essa inteira para pegar a cara regrinha também,
+funciono.
+Alguém escave de um jeito que é muito diferente disso,
+também, alguma coisa que viu, Fabinha.
+Sim, eu acho que primeiro, cara para ver isso.
+Obrigado.
+Obrigado.
+Obrigado por compartilhar foi bem tido.
+Eu já usei esse modelo seu,
+né, de escrita durante um tempo,
+gosto bastante.
+Hoje eu uso uma mesco entre esse modelo,
+e aquele que estava pecente ali,
+então eu sou a regrasolina, né.
+É assim, basicamente no final,
+ela tem, ao mesmo mesmo as coisas,
+que calma muito, você apresentou só aqui,
+não estou com um pouco diferente.
+Então, por exemplo, os critérios de aceite,
+eu coloco mais, melhorinha,
+até este de uma forma mais objetiva.
+Então, ele não fica dando dessa forma,
+porque isso daí eu coloco lá na documentação,
+mesmo do sistema,
+a documentação da regras,
+mas eu faço a referência,
+não é assim.
+Quando eu vou mandar por um design,
+eu já gosto de mandar por uma documentação pronto.
+Então, assim,
+em as vezes para te apurar
+as vezes a documentação,
+quando a gente precisa,
+mas só olhar na documentação mesmo,
+para que ficar casado...
+Então, é assim,
+isso é basicamente a mesma estrutura,
+fructo sobre ela,
+mas sempre joga para assim,
+mas ali, porque isso só vai ser
+papel grande,
+fructo sobre ela,
+você já sabe exatamente.
+Com o texto, já.
+Mas basicamente tem as mesmas coisas,
+na sua estrutura,
+mas ela é uma nesta,
+que vem de você,
+que eu desenho,
+mas é uma nesta,
+que vem de você,
+que eu desenho.
+Acho que melhor é jeito,
+é isso.
+Se aí juntando formas,
+porque tem alguém que fala,
+eu vou escrever,
+orientar o TDD.
+Eu uso um formato específico lá
+e se prende aquilo,
+agora eu sei aí,
+testando,
+e fazer no melhor possível,
+ele juntando,
+e fazer no frango que está ainda,
+nas vezes.
+Ela é ainda,
+da própria gentilidade,
+da aputação.
+Se reparar,
+tem gente novo chegando,
+tem gente que quer dar mais
+ele de casa,
+mas não,
+que passa na minha cabeça,
+que,
+algumas coisas como,
+uma,
+excelente iniciativa
+do na espontaneamente,
+ele trouxe,
+para ajudar,
+principalmente,
+que está com dificuldade,
+que está chegando agora.
+Então pessoal,
+quero colocar os mais rividos,
+e ter que sentir,
+me estará com informações
+para a gente poder compartilhar,
+trazer,
+com a equipe com todo,
+com essa galera mesmo.
+Cada vez mais o estimular,
+esse tipo de iniciativa,
+aqui,
+que era o colocar no vídeo,
+nem isso,
+que era o serviço.
+Outro ponto,
+é,
+a gente acabou,
+até agora,
+sobre aquela pesquisa,
+que eu fiz no finalzinho,
+que dando passado,
+a gente tinha vários temas
+que seriam trabalhadas
+nesse ano de 2024.
+Datas méticas,
+conceitas básicas,
+falando de screw-on,
+de organização,
+filosofia,
+de papel do pilo,
+negociação,
+comunicação,
+de schoolwork,
+de beque,
+e, com ferramentas,
+por dia de dia,
+como posso me levar ao meu produto,
+e outros topos,
+eu quero estar a casa,
+aquela cara está aberta,
+do lugar,
+de gente,
+tem que sair em governança,
+mas vejam contos desses pontos,
+a gente já foi trabalhando ao mundo desse ano.
+Só que,
+não vai passar,
+a gente precisa,
+esse é uma sua voz que feijou,
+a gente tem que estar lembrando
+sem filhos,
+e aí,
+quando a gente traz alguns termos
+como que o trosse hoje,
+não quer dizer que é o jogo,
+que o jeito certo,
+de fazer,
+dando contos,
+para o assunto,
+né,
+para a da continuidade,
+que a gente tem que ter
+nossa personalidade,
+que tem que ter
+nossa carina,
+em cada mão desses passos.
+Então,
+essa informação,
+de conteúdo que tinha,
+vai ser muito lindista
+de sua carreira,
+para você começar já
+a partir de um certo nível,
+e para ali,
+ou,
+você viu assim,
+se eu vou voltar,
+não tá de,
+o favor,
+vai passando para frente,
+pode passar,
+pode passar,
+pode passar,
+pode passar,
+pode passar,
+é aí,
+voltou,
+aqui ó,
+eu volta numa vez,
+né,
+né,
+não é,
+não próximo,
+mas aí,
+eu não posso dar construção completa,
+aqui,
+ó,
+se vocês olharem,
+hoje os usuários
+as anançamentos
+filançerem,
+sendo tudo na mão,
+faz com que eles são muito trabalho,
+de pessoa ficar frustrado,
+um dia de,
+e por isso a gente vai criar uma forma
+de importar,
+não é que tá ruim,
+tá ruim,
+só que vai começar a ser exigido,
+a gente pode mais,
+a gente pode mais que isso,
+então a gente está subindo
+a regrunha de assitação,
+a vida do nosso grupo,
+como todo,
+para algo mais complexo,
+que está aliado,
+que traz mais personalidade,
+com as mais dados,
+como as informações,
+o dedo que vai pegar isso,
+então,
+reparem que,
+relativamente,
+a gente está aporta,
+até então,
+super comum,
+e até a gente conversa,
+assim,
+do mal exemplo,
+no dia de,
+mas agora,
+aqui,
+aqui,
+aqui,
+aqui,
+aqui,
+aqui,
+aqui,
+aqui,
+aqui,
+e eu tenho certeza que se eu for daqui um ano,
+fazer uma apresentação nesse esquema de novo,
+eu vou tu gerir mais coisa,
+que eu vi que funcionou,
+ou alguma coisa que eu falei aqui,
+que perdeu o sentido,
+ou não dá tudo, né?
+Legal, isso que você falou,
+de colocar personalidade ali,
+aí eu,
+e eu,
+e eu,
+e eu,
+e eu,
+e eu,
+e eu,
+sabe bem,
+estou tenho algum dia gruma na clara.
+Se reelaad fami!
+Fai que te jinhe,
+eu ele já vai,
+e eu dure que era você,
+mas ou seja,
+mas você tem um país de sapones,
+só pode ser,
+eu isso também,
+mas,
+a vontade,
+1020 upgrade,
+mais um pouco, gente,
+Peraqueta, precisava linhar com a senhora, então se material não te mandeu um lembertinho no seu górtico,
+me manda depois, mas vai estar no chance também, algo que eu não havia ainda apresentado,
+eu mandei informação no grupo, conversei com o alfabeto para repassar, conversei com o alfabeto
+para acontecer um momento para o doca.
+Eu preciso saber então aqui.
+Vai, por cima?
+Não, você tem que aceitar o que você tem.
+Você está não, você está não.
+Você fica até veja.
+Não, vai, vai, vai, vai.
+Casigo, vai, ou na rea.
+E a chão, deixa?
+Deixa eu vai, ou na rea.
+Isso já faz um tempo galera, tinha...
